@@ -88,11 +88,11 @@ Variable Templates Options:
 list all Feature options whta you can do. 
 
 ## Comming soon
-⚙️ Function to fuzz the variable in the templates
-⚙️ Function to Create a SVG data with XXE Payload
-⚙️ Function to create a extern dtd data
-⚙️ Function for XML injection
-⚙️ Function for XPATH Injection
+⚙️ Function to fuzz the variable in the templates</br>
+⚙️ Function to Create a SVG data with XXE Payload</br>
+⚙️ Function to create a extern dtd data</br>
+⚙️ Function for XML injection</br>
+⚙️ Function for XPATH Injection</br>
 
 
 
