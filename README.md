@@ -1,6 +1,6 @@
 # My Program
 
-My Program is a tool for testing XXE/XEE payloads and crawling for XML data.
+My Program is a tool for testing XXE payloads and crawling for XML data.
 
 ## Installation
 
