@@ -8,12 +8,12 @@ A tool for testing XXE payloads.
 
 
 # Table of Content
-- [PassGenGo](#eXelion)
-  * [Remarks](#test)
-  * [Usage](#test)
-  * [Examples](#test)
-  * [Installation](#test)
-  * [Disclaimer](#test)
+- [eXelion](#eXelion)
+  * [test](#test)
+  * [test](#test)
+  * [test](#test)
+  * [test](#test)
+  * [test](#test)
 
 ## Description
 
@@ -31,7 +31,6 @@ You can also custom your request Header and body to send it to your URL and see 
 
 ## Usage
 ```
-
 usage: eXelion.py [options]
 
 Tools for XXE/XEE Payloads
@@ -86,14 +85,14 @@ Variable Templates Options:
  
 
 ## Features Overview
-
+list all Feature options whta you can do. 
 
 ## Comming soon
-- Function to fuzz the variable in the templates
-- Function to Create a SVG data with XXE Payload
-- Function to create a extern dtd data
-- Function for XML injection
-- Function for XPATH Injection
+⚙️ Function to fuzz the variable in the templates
+⚙️ Function to Create a SVG data with XXE Payload
+⚙️ Function to create a extern dtd data
+⚙️ Function for XML injection
+⚙️ Function for XPATH Injection
 
 
 
@@ -107,5 +106,4 @@ pip install eXelion
 
 
 ## Disclaimer
-This tool was primarily created as a project to improve my coding skills and begin developing some hacking tools. It is not intended to be the most efficient tool available.
-Additionally, you are responsible for any consequences that may arise from using this tool.
+This project, including the hacking tool, was developed solely to enhance my coding skills. Users of this tool are fully responsible for any consequences arising from its use.
