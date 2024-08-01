@@ -12,7 +12,7 @@ from templax import update_templates  # Import the String templates
 #Function to convert case_insensitive_dict in string
 def dict_to_str(case_insensitive_dict):
     """
-    Converts a CaseInsensitiveDict to a string format.
+    #Converts a CaseInsensitiveDict to a string format.
 
     Parameters:
         case_insensitive_dict (CaseInsensitiveDict): The headers to convert.

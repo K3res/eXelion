@@ -6,7 +6,7 @@ from colorama import Fore
 
 def extract_urls(soup, base_url):
     """
-    Extracts all URLs from the provided BeautifulSoup object that are within the same domain as the base URL.
+    #Extracts all URLs from the provided BeautifulSoup object that are within the same domain as the base URL.
 
     Parameters:
         soup (BeautifulSoup): The BeautifulSoup object containing HTML content.
