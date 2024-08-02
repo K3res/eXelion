@@ -22,10 +22,12 @@
 # Table of Content
 - [eXelion](#eXelion)
   * [Description](#Description)
+  * [General Informations](#GeneralInformations)
   * [Usage](#Usage)
   * [Features Overview](#FeaturesOverviewt)
   * [Comming soon](#Commingsoon)
   * [Installation](#Installation)
+  * [Usage](#Usage)
   * [Disclaimer](#Disclaimer)
 
 
@@ -36,6 +38,21 @@ It can also be used to crawl your target URL and search for all XML data interac
 Additionally, you can customize your request headers and body to send to your URL and observe the response.</br>
 
 🔧 This tool is still a work in progress, and changes may be implemented as development continues</br>
+
+
+## General Informations
+as default the tool will always show your request and response of your target </br>
+for the follow options `` you must use the ' qutoes to customs your Header and Body/XXE Payload </br>
+Example:</br>
+
+
+you can show all templates with `-st`. After that you can change some variable value like the pprotokoll or paths file</br>
+Example:</br>
+`python3 eXelion.py -`</br>
+
+You can search on XML interactionn with `-cr`. You can also see all URL that was found without a XML interaction with `crv`</br>
+Example:
+
 
 
 ## Usage
@@ -91,12 +108,16 @@ Variable Templates Options:
                         Varaible to change the URL for LFI attacks
  ```                                                                      
 
+## Example
+
+
+
 
 ## Features Overview
-Customize your own request.</br>
-Input your own XXE payloads or load an XML file containing your payloads.</br>
-Use and customize the XXE templates.</br>
-You can search a website for XML interactions.</br>
+📤 Customize your own request.</br>
+📑 Input your own XXE payloads or load an XML file containing your payloads.</br>
+📝 Use and customize the XXE templates.</br>
+🔎 Search a website for XML interactions.</br>
  
 
 ## Comming soon
@@ -118,6 +139,7 @@ git clone https://github.com/K3res/eXelion.git
 cd eXelion
 pip3 install -r requirements.txt
 ```
+
 
 
 ## Disclaimer
