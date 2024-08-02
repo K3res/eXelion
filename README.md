@@ -15,7 +15,7 @@
     Author:               K3res
     Github:               https://github.com/K3res/
     Check it Out!:        https://github.com/B0lg0r0v/
-    </pre>
+</pre>
 </div>
 
 <br/>
