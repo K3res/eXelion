@@ -1,6 +1,7 @@
 # eXelion
 
-```
+<p align="center">
+    <pre>
         __   __         _   _                 
         \ \ / /        | | (_)                
    ___   \ V /    ___  | |  _    ___    _ __  
@@ -13,10 +14,9 @@
             
     Author:               K3res
     Github:               https://github.com/K3res/
-    Check it Out!:        https://github.com/B0lg0r0v/     
-                    
-
-```
+    Check it Out!:        https://github.com/B0lg0r0v/
+    </pre>
+</p>
 <br/>
 
 # Table of Content
