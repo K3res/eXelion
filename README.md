@@ -22,20 +22,47 @@
 # Table of Content
 - [eXelion](#eXelion)
   * [Description](#Description)
+  * [General Informations](#GeneralInformations)
   * [Usage](#Usage)
   * [Features Overview](#FeaturesOverviewt)
   * [Comming soon](#Commingsoon)
   * [Installation](#Installation)
   * [Disclaimer](#Disclaimer)
-  * [test](#test)
+
 
 ## Description
 
-eXeleion is a simple tool designed to inject XXE payloads and display the results directly in the terminal.<\br>
-It can also be used to crawl your target URL and search for all XML data interactions.<\br>
-Additionally, you can customize your request headers and body to send to your URL and observe the response.<\br>
+eXeleion is a simple tool designed to inject XXE payloads and display the results directly in the terminal.</br>
+It can also be used to crawl your target URL and search for all XML data interactions.</br>
+Additionally, you can customize your request headers and body to send to your URL and observe the response.</br>
 
-🔧 This tool is still a work in progress, and changes may be implemented as development continues<\br>
+🔧 This tool is still a work in progress, and changes may be implemented as development continues</br>
+
+
+## General Informations
+The tool will always show your request and response for your target </br>
+For the following options `-he, -b, -x, -c` you must use the single qutoes '' to customs your Header and Body/XXE Payload </br>
+Example:</br>
+`python3 eXelion.py -he 'header: header' -b 'Body is there' -u http://google.com`</br>
+
+![image](https://github.com/user-attachments/assets/41ba3704-21fb-4f40-8296-746791cc7700)
+
+
+
+
+
+You can display all templates using `-st`. After that, you can modify variables such as the protocol or paths.</br>
+Example:</br>
+`python3 eXelion.py -xlfi -vfp '/tmp/test.txt' -vp 'htpp'`</br>
+
+
+
+You can search for XML interactions using `-cr`. You can also view all URLs that were found without XML interactions using `crv`.</br>
+Example:</br>
+`python3 eXelion.py -crv -u https://0a2a006c04b11c5881400c75008b0050.web-security-academy.net/`</br>
+
+![image](https://github.com/user-attachments/assets/00027aee-9f79-4597-b88a-29fceaea3c1d)
+
 
 
 ## Usage
@@ -91,16 +118,16 @@ Variable Templates Options:
                         Varaible to change the URL for LFI attacks
  ```                                                                      
 
-
 ## Features Overview
-Customize your own request.<\br>
-Input your own XXE payloads or load an XML file containing your payloads.<\br>
-Use and customize the XXE templates.<\br>
-You can search a website for XML interactions.<\br>
+📤 Customize your own request.</br>
+📑 Input your own XXE payloads or load an XML file containing your payloads.</br>
+📝 Use and customize the XXE templates.</br>
+🔎 Search a website for XML interactions.</br>
  
 
 ## Comming soon
-⚙️ Pip install features<\br> 
+⚙️ Pip install features</br>
+⚙️ Improve tool performance</br>
 ⚙️ Function to fuzz the variable in the templates</br>
 ⚙️ Function to Create a SVG data with XXE Payload</br>
 ⚙️ Function to create a extern dtd data</br>
@@ -111,11 +138,14 @@ You can search a website for XML interactions.<\br>
 
 ## Installation
 
-You can install this package using pip:
+Install eXelion:
 
 ```install
-pip install eXelion
+git clone https://github.com/K3res/eXelion.git
+cd eXelion
+pip3 install -r requirements.txt
 ```
+
 
 
 ## Disclaimer
