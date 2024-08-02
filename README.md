@@ -40,26 +40,29 @@ Additionally, you can customize your request headers and body to send to your UR
 
 
 ## General Informations
-as default the tool will always show your request and response of your target </br>
-for the follow options `-he, -b, -x, -c` you must use the ' qutoes to customs your Header and Body/XXE Payload </br>
+The tool will always show your request and response for your target </br>
+For the following options `-he, -b, -x, -c` you must use the single qutoes '' to customs your Header and Body/XXE Payload </br>
 Example:</br>
 `python3 eXelion.py -he 'header: header' -b 'Body is there' -u http://google.com`</br>
 
-![image](https://github.com/user-attachments/assets/9cc1a490-2b1d-48b5-b6c2-bcab60e19d14)
+![image](https://github.com/user-attachments/assets/41ba3704-21fb-4f40-8296-746791cc7700)
 
 
 
 
-you can show all templates with `-st`. After that you can change some variable value like the pprotokoll or paths file</br>
+
+You can display all templates using `-st`. After that, you can modify variables such as the protocol or paths.</br>
 Example:</br>
-`python3 eXelion.py -`</br>
+`python3 eXelion.py -xlfi -vfp '/tmp/test.txt' -vp 'htpp'`</br>
 
 
 
-You can search on XML interactionn with `-cr`. You can also see all URL that was found without a XML interaction with `crv`</br>
+You can search for XML interactions using `-cr`. You can also view all URLs that were found without XML interactions using `crv`.</br>
 Example:</br>
 `python3 eXelion.py -crv -u https://0a2a006c04b11c5881400c75008b0050.web-security-academy.net/`</br>
-![image](https://github.com/user-attachments/assets/3ce2a313-9d80-4a2b-8732-efeabf365e3e)
+
+![image](https://github.com/user-attachments/assets/00027aee-9f79-4597-b88a-29fceaea3c1d)
+
 
 
 ## Usage
