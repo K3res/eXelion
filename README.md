@@ -27,7 +27,6 @@
   * [Features Overview](#FeaturesOverviewt)
   * [Comming soon](#Commingsoon)
   * [Installation](#Installation)
-  * [Usage](#Usage)
   * [Disclaimer](#Disclaimer)
 
 
