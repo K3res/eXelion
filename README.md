@@ -1,7 +1,6 @@
 # eXelion
 
-<p align="center">
-    <pre>
+```
         __   __         _   _                 
         \ \ / /        | | (_)                
    ___   \ V /    ___  | |  _    ___    _ __  
@@ -15,9 +14,8 @@
     Author:               K3res
     Github:               https://github.com/K3res/
     Check it Out!:        https://github.com/B0lg0r0v/
-</pre>
-</p>
 
+```
 
 <br/>
 
@@ -29,6 +27,7 @@
   * [Features Overview](#FeaturesOverviewt)
   * [Comming soon](#Commingsoon)
   * [Installation](#Installation)
+  * [Notes](#Notes)
   * [Disclaimer](#Disclaimer)
 
 
@@ -146,7 +145,8 @@ cd eXelion
 pip3 install -r requirements.txt
 ```
 
-
+## Notes
+Check out  [B0lg0r0v's](https://github.com/B0lg0r0v)  GitHub site for interesting tools like [Elyzer](https://github.com/B0lg0r0v/Elyzer) or [Elixier](https://github.com/B0lg0r0v/Elixir). </br>
 
 ## Disclaimer
 This project, including the hacking tool, was developed solely to enhance my coding skills. Users of this tool are fully responsible for any consequences arising from its use.
