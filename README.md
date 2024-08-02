@@ -31,11 +31,11 @@
 
 ## Description
 
-eXeleion is a simple tool designed to inject XXE payloads and display the results directly in the terminal.<\br>
-It can also be used to crawl your target URL and search for all XML data interactions.<\br>
-Additionally, you can customize your request headers and body to send to your URL and observe the response.<\br>
+eXeleion is a simple tool designed to inject XXE payloads and display the results directly in the terminal.</br>
+It can also be used to crawl your target URL and search for all XML data interactions.</br>
+Additionally, you can customize your request headers and body to send to your URL and observe the response.</br>
 
-🔧 This tool is still a work in progress, and changes may be implemented as development continues<\br>
+🔧 This tool is still a work in progress, and changes may be implemented as development continues</br>
 
 
 ## Usage
