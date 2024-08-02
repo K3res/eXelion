@@ -41,17 +41,25 @@ Additionally, you can customize your request headers and body to send to your UR
 
 ## General Informations
 as default the tool will always show your request and response of your target </br>
-for the follow options `` you must use the ' qutoes to customs your Header and Body/XXE Payload </br>
+for the follow options `-he, -b, -x, -c` you must use the ' qutoes to customs your Header and Body/XXE Payload </br>
 Example:</br>
+`python3 eXelion.py -he 'header: header' -b 'Body is there' -u http://google.com`</br>
+
+![image](https://github.com/user-attachments/assets/9cc1a490-2b1d-48b5-b6c2-bcab60e19d14)
+
+
 
 
 you can show all templates with `-st`. After that you can change some variable value like the pprotokoll or paths file</br>
 Example:</br>
 `python3 eXelion.py -`</br>
 
-You can search on XML interactionn with `-cr`. You can also see all URL that was found without a XML interaction with `crv`</br>
-Example:
 
+
+You can search on XML interactionn with `-cr`. You can also see all URL that was found without a XML interaction with `crv`</br>
+Example:</br>
+`python3 eXelion.py -crv -u https://0a2a006c04b11c5881400c75008b0050.web-security-academy.net/`</br>
+![image](https://github.com/user-attachments/assets/3ce2a313-9d80-4a2b-8732-efeabf365e3e)
 
 
 ## Usage
@@ -115,7 +123,8 @@ Variable Templates Options:
  
 
 ## Comming soon
-⚙️ Pip install features</br> 
+⚙️ Pip install features</br>
+⚙️ Improve tool performance</br>
 ⚙️ Function to fuzz the variable in the templates</br>
 ⚙️ Function to Create a SVG data with XXE Payload</br>
 ⚙️ Function to create a extern dtd data</br>
