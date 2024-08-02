@@ -46,18 +46,21 @@ Example:</br>
 `python3 eXelion.py -he 'header: header' -b 'Body is there' -u http://google.com`</br>
 
 ![image](https://github.com/user-attachments/assets/41ba3704-21fb-4f40-8296-746791cc7700)
+</br>
+</br>
 
 
 
-
-
-You can display all templates using `-st`. After that, you can modify variables such as the protocol or paths.</br>
+Use the `-st` option to display all available templates. Subsequently, you can customize variables such as the protocol and paths.</br>
 Example:</br>
 `python3 eXelion.py -xlfi -vfp '/tmp/test.txt' -vp 'htpp'`</br>
 
+</br>
+</br>
 
+To search for XML interactions, use the `-cr` option. Additionally, you can view all URLs identified without XML interactions by using the `-crv` option.</br>
+</br>
 
-You can search for XML interactions using `-cr`. You can also view all URLs that were found without XML interactions using `crv`.</br>
 Example:</br>
 `python3 eXelion.py -crv -u https://0a2a006c04b11c5881400c75008b0050.web-security-academy.net/`</br>
 
