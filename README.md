@@ -52,8 +52,9 @@ Example:</br>
 
 
 Use the `-st` option to display all available templates. Subsequently, you can customize variables such as the protocol and paths.</br>
-Example:</br>
+</br>
 `python3 eXelion.py -xlfi -vfp '/tmp/test.txt' -vp 'htpp'`</br>
+![image](https://github.com/user-attachments/assets/2a1afa5b-08c1-4c53-a076-1f989a69b119)
 
 </br>
 </br>
@@ -61,9 +62,9 @@ Example:</br>
 To search for XML interactions, use the `-cr` option. Additionally, you can view all URLs identified without XML interactions by using the `-crv` option.</br>
 </br>
 
-Example:</br>
-`python3 eXelion.py -crv -u https://0a2a006c04b11c5881400c75008b0050.web-security-academy.net/`</br>
+</br>
 
+`python3 eXelion.py -crv -u https://0a2a006c04b11c5881400c75008b0050.web-security-academy.net/`</br>
 ![image](https://github.com/user-attachments/assets/00027aee-9f79-4597-b88a-29fceaea3c1d)
 
 
