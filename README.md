@@ -1,5 +1,24 @@
 # eXelion
 
+```
+        __   __         _   _                 
+        \ \ / /        | | (_)                
+   ___   \ V /    ___  | |  _    ___    _ __  
+  / _ \   > <    / _ \ | | | |  / _ \  | '_ \ 
+ |  __/  / . \  |  __/ | | | | | (_) | | | | |
+  \___| /_/ \_\  \___| |_| |_|  \___/  |_| |_|
+                      
+    
+    Version: 0.5 
+            
+    Author:               K3res
+    Github:               https://github.com/K3res/
+    Check it Out!:        https://github.com/B0lg0r0v/     
+                    
+
+```
+
+
  
 ![grafik](https://github.com/user-attachments/assets/42668cbc-aeb2-4209-8c07-a0cf693011cb)<br/>
 
