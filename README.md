@@ -93,14 +93,14 @@ Variable Templates Options:
 
 
 ## Features Overview
-Customize your own request.<\br>
-Input your own XXE payloads or load an XML file containing your payloads.<\br>
-Use and customize the XXE templates.<\br>
-You can search a website for XML interactions.<\br>
+Customize your own request.</br>
+Input your own XXE payloads or load an XML file containing your payloads.</br>
+Use and customize the XXE templates.</br>
+You can search a website for XML interactions.</br>
  
 
 ## Comming soon
-⚙️ Pip install features<\br> 
+⚙️ Pip install features</br> 
 ⚙️ Function to fuzz the variable in the templates</br>
 ⚙️ Function to Create a SVG data with XXE Payload</br>
 ⚙️ Function to create a extern dtd data</br>
