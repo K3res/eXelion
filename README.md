@@ -1,6 +1,6 @@
 # eXelion
 
-<p align="center">
+<div style="text-align: center;">
     <pre>
         __   __         _   _                 
         \ \ / /        | | (_)                
@@ -16,7 +16,8 @@
     Github:               https://github.com/K3res/
     Check it Out!:        https://github.com/B0lg0r0v/
     </pre>
-</p>
+</div>
+
 <br/>
 
 # Table of Content
