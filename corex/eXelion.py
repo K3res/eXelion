@@ -323,7 +323,8 @@ if __name__ == "__main__":
   \___| /_/ \_\  \___| |_| |_|  \___/  |_| |_|
                       
     
-        
+    Version: 0.5 
+            
     Author:               K3res
     Github:               https://github.com/K3res/
     Check it Out!:        https://github.com/B0lg0r0v/     
