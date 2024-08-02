@@ -108,11 +108,6 @@ Variable Templates Options:
                         Varaible to change the URL for LFI attacks
  ```                                                                      
 
-## Example
-
-
-
-
 ## Features Overview
 📤 Customize your own request.</br>
 📑 Input your own XXE payloads or load an XML file containing your payloads.</br>
