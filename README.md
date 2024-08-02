@@ -17,10 +17,7 @@
                     
 
 ```
-
-
- 
-![grafik](https://github.com/user-attachments/assets/42668cbc-aeb2-4209-8c07-a0cf693011cb)<br/>
+<br/>
 
 # Table of Content
 - [eXelion](#eXelion)
