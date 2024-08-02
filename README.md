@@ -21,25 +21,22 @@
 
 # Table of Content
 - [eXelion](#eXelion)
-  * [test](#test)
-  * [test](#test)
-  * [test](#test)
-  * [test](#test)
+  * [Description](#Description)
+  * [Usage](#Usage)
+  * [Features Overview](#FeaturesOverviewt)
+  * [Comming soon](#Commingsoon)
+  * [Installation](#Installation)
+  * [Disclaimer](#Disclaimer)
   * [test](#test)
 
 ## Description
 
-eXeleion is a simple tool to inject XXE Payloads and give the result in the terminal back.
-It can be also use to crawl your URL Target to search all XML data interactions.  
-You can also custom your request Header and body to send it to your URL and see the response. 
+eXeleion is a simple tool designed to inject XXE payloads and display the results directly in the terminal.<\br>
+It can also be used to crawl your target URL and search for all XML data interactions.<\br>
+Additionally, you can customize your request headers and body to send to your URL and observe the response.<\br>
 
-🔧 This tool is still a work in progress, and changes may be implemented as development continues
+🔧 This tool is still a work in progress, and changes may be implemented as development continues<\br>
 
-## General Information
-- normal function expplain
-- Template function explain
-  all options
-- Crawler function explain
 
 ## Usage
 ```
@@ -62,7 +59,7 @@ Request options:
                         Use custom XML file with XXE payload
 
 Special options:
-  -cr, --crawlex        search on the website for XML
+  -cr, --crawlex        search on the website for XML interaction
   -crv, --crawlexverbose
                         display all crawled URLs, even if no XML was found
   -t, --time            give the finish time back
@@ -94,12 +91,16 @@ Variable Templates Options:
                         Varaible to change the URL for LFI attacks
  ```                                                                      
 
- 
 
 ## Features Overview
-list all Feature options whta you can do. 
+Customize your own request.<\br>
+Input your own XXE payloads or load an XML file containing your payloads.<\br>
+Use and customize the XXE templates.<\br>
+You can search a website for XML interactions.<\br>
+ 
 
 ## Comming soon
+⚙️ Pip install features<\br> 
 ⚙️ Function to fuzz the variable in the templates</br>
 ⚙️ Function to Create a SVG data with XXE Payload</br>
 ⚙️ Function to create a extern dtd data</br>
