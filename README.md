@@ -27,7 +27,7 @@
   * [Comming soon](#Commingsoon)
   * [Installation](#Installation)
   * [Disclaimer](#Disclaimer)
-  * [test](#test)
+
 
 ## Description
 
@@ -111,10 +111,12 @@ You can search a website for XML interactions.<\br>
 
 ## Installation
 
-You can install this package using pip:
+Install eXelion:
 
 ```install
-pip install eXelion
+git clone https://github.com/K3res/eXelion.git
+cd eXelion
+pip3 install -r requirements.txt
 ```
 
 
