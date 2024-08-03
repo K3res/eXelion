@@ -135,6 +135,7 @@ Variable Templates Options:
 ⚙️ Improve tool performance</br>
 ⚙️ Function to fuzz the variable in the templates</br>
 ⚙️ Function to Create a SVG data with XXE Payload</br>
+⚙️ Interactive Function to create you own XXE Payload
 ⚙️ Function to create a extern dtd data</br>
 ⚙️ Function for XML injection</br>
 ⚙️ Function for XPATH Injection</br>
