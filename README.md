@@ -133,9 +133,9 @@ Variable Templates Options:
 ## Comming soon
 ⚙️ Pip install features</br>
 ⚙️ Improve tool performance</br>
-⚙️ Function to fuzz the variable in the templates</br>
+⚙️ Function to use a wordlist for the variables in templates</br>
 ⚙️ Function to Create a SVG data with XXE Payload</br>
-⚙️ Interactive Function to create you own XXE Payload
+⚙️ Interactive Function to create you own XXE Payload</br>
 ⚙️ Function to create a extern dtd data</br>
 ⚙️ Function for XML injection</br>
 ⚙️ Function for XPATH Injection</br>
