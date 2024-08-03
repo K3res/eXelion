@@ -13,10 +13,10 @@
             
     Author:               K3res
     Github:               https://github.com/K3res/
-    Check it Out!:        https://github.com/B0lg0r0v/     
-                    
+    Check it Out!:        https://github.com/B0lg0r0v/
 
 ```
+
 <br/>
 
 # Table of Content
@@ -27,6 +27,7 @@
   * [Features Overview](#FeaturesOverviewt)
   * [Comming soon](#Commingsoon)
   * [Installation](#Installation)
+  * [Notes](#Notes)
   * [Disclaimer](#Disclaimer)
 
 
@@ -42,7 +43,6 @@ Additionally, you can customize your request headers and body to send to your UR
 ## General Informations
 The tool will always show your request and response for your target </br>
 For the following options `-he, -b, -x, -c` you must use the single qutoes '' to customs your Header and Body/XXE Payload </br>
-Example:</br>
 `python3 eXelion.py -he 'header: header' -b 'Body is there' -u http://google.com`</br>
 
 ![image](https://github.com/user-attachments/assets/41ba3704-21fb-4f40-8296-746791cc7700)
@@ -52,18 +52,14 @@ Example:</br>
 
 
 Use the `-st` option to display all available templates. Subsequently, you can customize variables such as the protocol and paths.</br>
-Example:</br>
 `python3 eXelion.py -xlfi -vfp '/tmp/test.txt' -vp 'htpp'`</br>
+![image](https://github.com/user-attachments/assets/2a1afa5b-08c1-4c53-a076-1f989a69b119)
 
 </br>
 </br>
 
 To search for XML interactions, use the `-cr` option. Additionally, you can view all URLs identified without XML interactions by using the `-crv` option.</br>
-</br>
-
-Example:</br>
 `python3 eXelion.py -crv -u https://0a2a006c04b11c5881400c75008b0050.web-security-academy.net/`</br>
-
 ![image](https://github.com/user-attachments/assets/00027aee-9f79-4597-b88a-29fceaea3c1d)
 
 
@@ -149,7 +145,8 @@ cd eXelion
 pip3 install -r requirements.txt
 ```
 
-
+## Notes
+Check out  [B0lg0r0v's](https://github.com/B0lg0r0v)  GitHub site for interesting tools like [Elyzer](https://github.com/B0lg0r0v/Elyzer) or [Elixier](https://github.com/B0lg0r0v/Elixir). </br>
 
 ## Disclaimer
 This project, including the hacking tool, was developed solely to enhance my coding skills. Users of this tool are fully responsible for any consequences arising from its use.
