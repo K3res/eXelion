@@ -7,6 +7,9 @@ from colorama import Fore
 import sys 
 from crawlex import crawl, check_xxe  # Import the crawl and xxe check function
 from templax import update_templates  # Import the String templates
+import concurrent
+from concurrent.futures import ThreadPoolExecutor
+
 
 
 #Function to convert case_insensitive_dict in string
@@ -134,12 +137,26 @@ def perform_crawl(argsx, headers):
             - List of detected URLs with XML data transfer.
             - List of all crawled URLs.
     """
+# Erstelle eine Session
+    session = requests.Session()
+    session.headers.update({'Connection': 'keep-alive'})
+
+    def crawl_with_session(url):
+        return crawl(url, max_depth=20, headers=headers, session=session)
+
     if argsx.url:
         print(f"Starting deep XML crawler for URL: {Fore.YELLOW} {argsx.url}{Fore.RESET}...")
-        _, all_urls = crawl(argsx.url, max_depth=20, headers=headers)
-        print("\nChecking for XML Data transfer...")
+
+        # Verwende die Session für Crawling
+        with ThreadPoolExecutor(max_workers=10) as executor:
+            future_to_url = {executor.submit(crawl_with_session, argsx.url): argsx.url}
+            for future in concurrent.futures.as_completed(future_to_url):
+                detected_urls, all_urls = future.result()
+                print("\nChecking for XML Data transfer...")
+
         detected_urls = [url for url in all_urls if check_xxe(url, headers=headers, body='<?xml version="1.0">')]
         return detected_urls, all_urls  # Ensure both sets are returned
+    
     return [], []  # Return empty lists if URL is not provided
 
 def print_response(response):
@@ -342,4 +359,4 @@ if __name__ == "__main__":
     Check it Out!:        https://github.com/B0lg0r0v/     
                     
   """)
-  main()
+main()

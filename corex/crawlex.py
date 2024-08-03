@@ -4,7 +4,11 @@ from urllib.parse import urljoin, urlparse
 from colorama import Fore
 import concurrent.futures
 import os
+import threading
+from concurrent.futures import ThreadPoolExecutor
 
+# Lock for thread-safe URL set operations
+visited_urls_lock = threading.Lock()
 
 def extract_urls(soup, base_url):
     """
@@ -21,7 +25,7 @@ def extract_urls(soup, base_url):
     urls = set()
     tags = ['a', 'link', 'img', 'script', 'iframe', 'form']
     attributes = ['href', 'src', 'action']
-
+    
     for tag in tags:
         elements = soup.find_all(tag)
         for element in elements:
@@ -53,7 +57,7 @@ def contains_xxe_indicators(body):
     return False
 
 
-def fetch_url(url, headers=None, body=None):
+def fetch_url(url, headers=None, body=None, session=None):
     """
     Fetches the content of a URL and returns the response, or None if there is a request exception.
 
@@ -67,17 +71,15 @@ def fetch_url(url, headers=None, body=None):
             - response (Response or None): The HTTP response object if the request was successful, otherwise None.
             - url (str): The URL that was fetched.
     """
-    
-    
     try:
-        response = requests.get(url, headers=headers, data=body)
+        response = session.get(url, headers=headers, data=body) if session else requests.get(url, headers=headers, data=body)
         return response
     except requests.RequestException as e:
         print(f"Request failed: {e}")
         return None
 
 
-def crawl(url, max_depth=1, current_depth=0, visited_urls=None, headers=None, body=None):
+def crawl(url, max_depth=1, current_depth=0, visited_urls=None, headers=None, body=None, session=None):
     """
     Crawls a URL recursively up to a specified depth and checks for XXE indicators.
 
@@ -104,7 +106,7 @@ def crawl(url, max_depth=1, current_depth=0, visited_urls=None, headers=None, bo
     visited_urls.add(url)
     xml_urls = set()
 
-    response = fetch_url(url, headers, body)
+    response = fetch_url(url, headers, body, session)
     if not response:
         return xml_urls, visited_urls
 
@@ -116,11 +118,11 @@ def crawl(url, max_depth=1, current_depth=0, visited_urls=None, headers=None, bo
     urls = extract_urls(soup, url)
 
     # Limiting max_workers to avoid overload
-    max_workx = min(32, os.cpu_count() + 4)  
+    max_workers = min(32, os.cpu_count() + 4)  
 
     # Crawl found URLs using multithreading
-    with concurrent.futures.ThreadPoolExecutor(max_workers=max_workx) as executor:
-        future_to_url = {executor.submit(crawl, u, max_depth, current_depth + 1, visited_urls, headers, body): u for u in urls if u not in visited_urls}
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        future_to_url = {executor.submit(crawl, u, max_depth, current_depth + 1, visited_urls, headers, body, session): u for u in urls if u not in visited_urls}
 
         for future in concurrent.futures.as_completed(future_to_url):
             u = future_to_url[future]
@@ -154,10 +156,8 @@ def check_xxe(url, headers=None, body=None):
         if body:
             headers['Content-Length'] = str(len(body))
 
-        # Perform the POST request
         response = requests.post(url, headers=headers, data=body)
 
-        # Check for possible XXE indicators in the response body
         if contains_xxe_indicators(response.text):
             print(f"Possible XML data transfer detected at: {Fore.GREEN} {url} {Fore.RESET}")
             #print(f"Response: {response.text}")
