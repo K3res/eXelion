@@ -12,9 +12,9 @@ setup(
         "requests",
         "beautifulsoup4",
         "urllib3",
-        "colorama",
-        "argparse"
-    ],
+        "colorama"
+       
+           ],
     entry_points={  
         'console_scripts': [
             'exelion=eXelion:main',  

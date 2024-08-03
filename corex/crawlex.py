@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
 from colorama import Fore
 import concurrent.futures
+import os
 
 
 def extract_urls(soup, base_url):
@@ -54,7 +55,7 @@ def contains_xxe_indicators(body):
 
 def fetch_url(url, headers=None, body=None):
     """
-    Sends an HTTP GET request to the specified URL and checks for XXE indicators in the response.
+    Fetches the content of a URL and returns the response, or None if there is a request exception.
 
     Parameters:
         url (str): The URL to fetch.
@@ -70,12 +71,10 @@ def fetch_url(url, headers=None, body=None):
     
     try:
         response = requests.get(url, headers=headers, data=body)
-        if contains_xxe_indicators(response.text):
-            print(f"Possible XML data transfer detected at: {Fore.GREEN}{url}{Fore.RESET}")
-        return response, url
+        return response
     except requests.RequestException as e:
         print(f"Request failed: {e}")
-        return None, url
+        return None
 
 
 def crawl(url, max_depth=1, current_depth=0, visited_urls=None, headers=None, body=None):
@@ -96,41 +95,41 @@ def crawl(url, max_depth=1, current_depth=0, visited_urls=None, headers=None, bo
             - set: A set of all visited URLs.
     """
     
-    
     if visited_urls is None:
         visited_urls = set()
 
-    if current_depth > max_depth:
-        return set(), visited_urls
-
-    if url in visited_urls:
+    if current_depth > max_depth or url in visited_urls:
         return set(), visited_urls
 
     visited_urls.add(url)
     xml_urls = set()
-    all_urls = set()
 
-    headers = headers or {}
-    parsed_url = urlparse(url)
-    if parsed_url.netloc:
-        headers['Host'] = parsed_url.netloc
-    if body:
-        headers['Content-Length'] = str(len(body))
+    response = fetch_url(url, headers, body)
+    if not response:
+        return xml_urls, visited_urls
 
-    response, _ = fetch_url(url, headers, body)
-    all_urls.add(url)
+    if contains_xxe_indicators(response.text):
+        print(f"Possible XML data transfer detected at: {Fore.GREEN}{url}{Fore.RESET}")
+        xml_urls.add(url)
 
-    if response:
-        soup = BeautifulSoup(response.text, 'xml')
-        urls = extract_urls(soup, url)
+    soup = BeautifulSoup(response.text, 'lxml')  # Use 'html.parser' for HTML content
+    urls = extract_urls(soup, url)
 
-        with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-            future_to_url = {executor.submit(crawl, u, max_depth, current_depth + 1, visited_urls, headers, body): u for u in urls if u not in visited_urls}
+    # Limiting max_workers to avoid overload
+    max_workx = min(32, os.cpu_count() + 4)  
 
-            for future in concurrent.futures.as_completed(future_to_url):
+    # Crawl found URLs using multithreading
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max_workx) as executor:
+        future_to_url = {executor.submit(crawl, u, max_depth, current_depth + 1, visited_urls, headers, body): u for u in urls if u not in visited_urls}
+
+        for future in concurrent.futures.as_completed(future_to_url):
+            u = future_to_url[future]
+            try:
                 found_xml_urls, updated_visited_urls = future.result()
                 xml_urls.update(found_xml_urls)
                 visited_urls.update(updated_visited_urls)
+            except Exception as e:
+                print(f"Exception occurred while crawling {u}: {e}")
 
     return xml_urls, visited_urls
 
