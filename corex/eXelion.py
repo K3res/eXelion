@@ -108,8 +108,11 @@ def build_body(argsx, template_s):
     if argsx.xxe:
         bodyg += argsx.xxe
     if argsx.xxefile:
-        with open(argsx.xxefile, 'r') as file:
-            bodyg += file.read()
+        try:
+            with open(argsx.xxefile, 'r') as file:
+                bodyg += file.read()
+        except FileNotFoundError:
+            print(f"{Fore.RED}File not found!{Fore.RESET}")        
     if argsx.xxeFileDisclosure:
         bodyg += template_s[0]
     if argsx.xeeBillionLaughs:
