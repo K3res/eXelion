@@ -162,20 +162,27 @@ def perform_crawl(argsx, headers):
     
     return [], []  # Return empty lists if URL is not provided
 
-def print_response(response):
+def print_response(response, disable_header=False, disable_body=False):
     """
     Prints the details of the HTTP request and response.
 
     Parameters:
         response (Response): The HTTP response object.
     """
-    print("\nRequest:\n")
+   # Always print the request header
+    print(f"{Fore.YELLOW}\nRequest:\n{Fore.RESET}")
     print(dict_to_str(response.request.headers) + "\n")
-    print("Body:\n")
+
+    # Always print the request body
+    print("\nBody:\n")
     print(f"{Fore.YELLOW}{response.request.body}{Fore.RESET}" if response.request.body else f"{Fore.CYAN}Body is empty!!!!{Fore.RESET}")
-    print("\n\nResponse:\n")
-    print(dict_to_str(response.headers) + "\n")
-    print(f"Body:{Fore.GREEN}\n{response.text}{Fore.RESET}")
+
+    if not disable_header or not disable_body:
+        print(f"{Fore.YELLOW}\n\nResponse:\n{Fore.RESET}")
+        if not disable_header:
+            print(dict_to_str(response.headers) + "\n")
+        if not disable_body:
+            print(f"Body:{Fore.GREEN}\n{response.text}{Fore.RESET}")
 
 def show_templates(template_s, templates_h):
     """
@@ -254,6 +261,9 @@ def main():
   groupx.add_argument('-cr', '--crawlex', action="store_true", help='search on the website for XML interactions')
   groupx.add_argument('-crv', '--crawlexverbose', action="store_true", help='display all crawled URLs, even if no XML was found')
   groupx.add_argument('-t', '--time', action="store_true", help='give the finish time back')
+  groupx.add_argument('-drh', '--disableResponseHeader', action="store_true", help='Disable the display of the response header')
+  groupx.add_argument('-drb', '--disableResponseBody', action="store_true", help='Disable the display of the response body')
+
 
 
   groupx = parx.add_argument_group('Templates options')
@@ -331,7 +341,7 @@ def main():
     # Execute request
   if argsx.url:
         req = requests.post(argsx.url, headers=headerg, data=bodyg)
-        print_response(req)
+        print_response(req, disable_header=argsx.disableResponseHeader, disable_body=argsx.disableResponseBody)
 
     # Calculate time
   if argsx.time:
