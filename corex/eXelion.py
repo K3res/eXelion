@@ -162,6 +162,14 @@ def perform_crawl(argsx, headers):
     
     return [], []  # Return empty lists if URL is not provided
 
+def get_http_version(version):
+    """
+    Converts the raw HTTP version number to a readable string.
+    """
+    versions = {10: 'HTTP/1.0', 11: 'HTTP/1.1', 20: 'HTTP/2.0'}
+    return versions.get(version, 'Unknown HTTP Version')
+
+
 def print_response(response, disable_header=False, disable_body=False):
     """
     Prints the details of the HTTP request and response.
@@ -169,7 +177,7 @@ def print_response(response, disable_header=False, disable_body=False):
     Parameters:
         response (Response): The HTTP response object.
     """
-   # Always print the request header
+     # Always print the request header
     print(f"{Fore.YELLOW}\nRequest:\n{Fore.RESET}")
     print(dict_to_str(response.request.headers) + "\n")
 
@@ -180,8 +188,12 @@ def print_response(response, disable_header=False, disable_body=False):
     if not disable_header or not disable_body:
         print(f"{Fore.YELLOW}\n\nResponse:\n{Fore.RESET}")
         if not disable_header:
+            # Print the response status code and headers
+            http_version = get_http_version(response.raw.version)
+            print(f"{http_version} {response.status_code} {response.reason}")
             print(dict_to_str(response.headers) + "\n")
         if not disable_body:
+            # Print the response body
             print(f"Body:{Fore.GREEN}\n{response.text}{Fore.RESET}")
 
 def show_templates(template_s, templates_h):
@@ -253,7 +265,7 @@ def main():
   groupx.add_argument('-b', '--body', type=str, help='Use custom body')
   groupx.add_argument('-x', '--xxe', type=str, help='Use custom XXE payload')
   groupx.add_argument('-xf', '--xxefile', help='Use custom XML file with XXE payload')
-
+  groupx.add_argument('-shv', '--sethttpversion', type=str, choices=['HTTP/1.0', 'HTTP/1.1', 'HTTP/2'], help='Set HTTP version for the request')
 
   groupx = parx.add_argument_group('Special options')
 
