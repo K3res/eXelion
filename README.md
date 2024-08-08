@@ -91,10 +91,14 @@ Request options:
                         Use custom XML file with XXE payload
 
 Special options:
-  -cr, --crawlex        search on the website for XML interaction
+  -cr, --crawlex        search on the website for XML interactions
   -crv, --crawlexverbose
                         display all crawled URLs, even if no XML was found
   -t, --time            give the finish time back
+  -drh, --disableResponseHeader
+                        Disable the display of the response header
+  -drb, --disableResponseBody
+                        Disable the display of the response body
 
 Templates options:
   -st, --showTemplates  show all availible templates
