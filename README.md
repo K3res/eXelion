@@ -153,6 +153,7 @@ Install eXelion:
 ```install
 git clone https://github.com/K3res/eXelion.git
 cd eXelion
+cd corex
 pip3 install -r requirements.txt
 ```
 
