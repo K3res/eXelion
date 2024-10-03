@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="exelion",  
-    version="0.5.1", 
+    version="0.5.0", 
     description="Tools for XXE/XEE Payloads and Crawling",  
     author="K3res",   
     url="https://github.com/K3res/eXelion",  

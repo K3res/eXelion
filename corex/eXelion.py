@@ -361,6 +361,7 @@ def main():
         real_t = end_t - start_t
         print("\n")
         print(f"Program duration:{Fore.YELLOW} {real_t:.2f} {Fore.RESET} seconds.")
+  
   #------------------------------------------------------
 
   
